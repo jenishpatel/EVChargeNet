@@ -4,15 +4,17 @@
   <p align="center">
     A scalable, cloud-native web application engineered to deliver a frictionless electric vehicle charging experience.
     <br />
-    <a href="#-live-demo"><strong>View Live Demo</strong></a>
+    <a href="https://evchargenet.netlify.app/"><strong>View Live Demo</strong></a>
   </p>
 </div>
 
 <div align="center">
 
-| **License** | **Contributions** | **Code Style** |
-| :---: | :---: | :---: |
-| [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) | [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) |
+
+
+| [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) | [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) | [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com) |
+[![Firebase](https://img.shields.io/badge/Backend-Firebase-orange.svg)](https://firebase.google.com/) |
+[![TailwindCSS](https://img.shields.io/badge/CSS-Tailwind-blue.svg)](https://tailwindcss.com/) |
 
 </div>
 
@@ -106,6 +108,21 @@ The NoSQL database schema is designed for performance and scalability, with data
 * **`renderStationList()` / `updateMarkers()`**: Intelligently re-renders only the necessary DOM elements when data changes, preventing full-page reloads and improving performance.
 * **Event Delegation Model**: A single event listener on `document.body` handles all user interactions with dynamic content (e.g., "Book Now" buttons on station cards), which is significantly more memory-efficient than attaching individual listeners.
 
+### 4.4 🛠️ Built With
+
+This project leverages modern web technologies to provide a responsive and real-time experience.
+
+* **Frontend**:
+    * HTML5
+    * CSS3 with [TailwindCSS](https://tailwindcss.com/)
+    * JavaScript (ES6+)
+    * [Leaflet.js](https://leafletjs.com/) for interactive maps
+    * [Chart.js](https://www.chartjs.org/) for data visualization
+    * [Font Awesome](https://fontawesome.com/) for icons
+* **Backend & Database**:
+    * [cite_start][Firebase](https://firebase.google.com/) [cite: 40]
+        * **Firestore**: Real-time NoSQL database for station, user, and booking data.
+        * **Firebase Authentication**: For handling user and admin sign-up/sign-in
 ---
 
 ## 5. Getting Started
@@ -134,6 +151,35 @@ The NoSQL database schema is designed for performance and scalability, with data
     ```
 4.  **Launch the Application:**
     * No build step is required. Simply open `index.html` in a modern web browser.
+
+
+### 5.3 🚀 Getting Started (Local Development)
+
+To get a local copy up and running, follow these steps.
+
+1.  **Clone the repository:**
+    ```sh
+    git clone [https://github.com/jenishpatel/EVChargeNet.git](https://github.com/jenishpatel/EVChargeNet.git)
+    cd EVChargeNet
+    ```
+
+2.  **Set up your Firebase Credentials:**
+    * Create your own project at the [Firebase Console](https://console.firebase.google.com/).
+    * In the `electric vehichal bunk app (EVchargeNet)` folder, find the `config.template.js` file.
+    * **Duplicate this file** and rename the copy to `config.js`. This `config.js` file is already in the `.gitignore` and will not be pushed to GitHub.
+    * Open `config.js` and replace the placeholder values with your own Firebase project's credentials.
+
+3.  **Open the application:**
+    * Navigate to the `electric vehichal bunk app (EVchargeNet)` directory.
+    * Open the `index.html` file in your web browser.
+
+## 🚢 Deployment
+
+This project is configured for continuous deployment on **Netlify**. The repository is set up to deploy securely using environment variables.
+
+* **Base directory:** `electric vehichal bunk app (EVchargeNet)`
+* **Build command:** The repository uses a `sed` command to generate the `config.js` file from `config.template.js` during the build process.
+* **Environment Variables**: All secret keys (like `API_KEY`, `APP_ID`, etc.) are stored securely as environment variables on Netlify.
 
 ---
 
