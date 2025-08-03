@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charging App</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Main App Container -->
+    <div id="app-container">
+
+        <!-- Login/Registration Screen -->
+        <div id="auth-screen" class="flex items-center justify-center min-h-screen p-4">
+            <div class="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400"><i class="fas fa-charging-station mr-2"></i>EV ChargeNet</h1>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Your cloud-connected charging companion</p>
+                </div>
+                
+                <div class="flex border-b border-gray-200 dark:border-gray-700">
+                    <div id="login-tab" class="auth-tab active flex-1 text-center">Login</div>
+                    <div id="register-tab" class="auth-tab flex-1 text-center">Register</div>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form-container">
+                    <form id="login-form" class="mt-6 space-y-4" novalidate>
+                        <div>
+                            <label for="login-username" class="sr-only">Email</label>
+                            <input id="login-username" name="username" type="email" required class="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 placeholder-gray-500 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Email (e.g., user@example.com)">
+                        </div>
+                        <div>
+                            <label for="login-password" class="sr-only">Password</label>
+                            <input id="login-password" name="password" type="password" required class="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 placeholder-gray-500 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Password">
+                        </div>
+                        <div>
+                            <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="register-form-container" class="hidden">
+                     <form id="register-form" class="mt-6 space-y-4" novalidate>
+                        <div>
+                            <label for="register-username" class="sr-only">Email</label>
+                            <input id="register-username" name="username" type="email" required class="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 placeholder-gray-500 text-gray-900 dark:text-white rounded-md" placeholder="Choose an Email">
+                            <p id="register-username-error" class="form-error"></p>
+                        </div>
+                        <div>
+                            <label for="register-password" class="sr-only">Password</label>
+                            <input id="register-password" name="password" type="password" required class="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 placeholder-gray-500 text-gray-900 dark:text-white rounded-md" placeholder="Choose a Password (min. 6 characters)">
+                            <p id="register-password-error" class="form-error"></p>
+                        </div>
+                         <div>
+                            <label for="role-select" class="sr-only">Role</label>
+                            <select id="role-select" name="role" required class="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-md">
+                                <option value="user">Register as a User</option>
+                                <option value="admin">Register as an Admin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition">
+                                Create Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- User App -->
+        <div id="user-app" class="hidden"></div>
+
+        <!-- Admin App -->
+        <div id="admin-app" class="hidden"></div>
+    </div>
+
+    <!-- Modals and Toast are defined globally at the end of the body -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[100] flex items-center justify-center hidden p-4 modal-container"></div>
+    <div id="station-detail-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[100] flex items-center justify-center hidden p-4 modal-container"></div>
+    <div id="admin-station-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[100] flex items-center justify-center hidden p-4 overflow-y-auto modal-container"></div>
+    <div id="onboarding-modal-overlay" class="fixed inset-0 bg-black bg-opacity-75 z-10000 hidden"></div>
+    <div id="toast" class="toast"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="config.js"></script>
+    <!-- Main App Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
