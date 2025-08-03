@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/ev logo.png" alt="EV ChargeNet Logo" width="250" height="300">
+  <img src="./assets/evlogo.png" alt="EV ChargeNet Logo" width="250" height="300">
   <h1 align="center">EV ChargeNet: A Real-Time Charging Platform</h1>
   <p align="center">
     A scalable, cloud-native web application engineered to deliver a frictionless electric vehicle charging experience.
