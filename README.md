@@ -1,22 +1,18 @@
 <div align="center">
-  <img src="https://placehold.co/150x150/4338ca/ffffff?text=EV" alt="EV ChargeNet Logo" width="120" height="120">
+  <img src="./assets/ev logo.png" alt="EV ChargeNet Logo" width="250" height="300">
   <h1 align="center">EV ChargeNet: A Real-Time Charging Platform</h1>
   <p align="center">
     A scalable, cloud-native web application engineered to deliver a frictionless electric vehicle charging experience.
     <br />
     <a href="#-live-demo"><strong>View Live Demo</strong></a>
-    ·
-    <a href="https://github.com/your-username/your-repo-name/issues/new?assignees=&labels=bug&template=bug_report.md&title=">Report a Bug</a>
-    ·
-    <a href="https://github.com/your-username/your-repo-name/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=">Request a Feature</a>
   </p>
 </div>
 
 <div align="center">
 
-| **CI/CD** | **License** | **Contributions** | **Code Style** |
-| :---: | :---: | :---: | :---: |
-| [![CI](https://github.com/your-username/your-repo-name/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo-name/actions/workflows/ci.yml) | [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) | [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) |
+| **License** | **Contributions** | **Code Style** |
+| :---: | :---: | :---: |
+| [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) | [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) |
 
 </div>
 
@@ -40,17 +36,17 @@ The user-facing application is designed with a clean, intuitive, and responsive 
 | Login & Authentication Screen                               | User Dashboard - Map View                                   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | *Secure login and registration for both users and admins.* | *Interactive map with real-time station status indicators.* |
-| ![Login Screen](https://placehold.co/600x400/eef2ff/4338ca?text=Authentication+Screen) | ![User Map View](https://placehold.co/600x400/eef2ff/4338ca?text=User+Map+View) |
+| ![Login Screen](./assets/auth.png) | ![User Map View](./assets/mapview.png) |
 
 | Station List with Live Filtering                           | Detailed Station Modal with Reviews                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | *Card-based view of stations that updates instantly with filters.* | *Comprehensive details, including amenities and user ratings.* |
-| ![Station List](https://placehold.co/600x400/eef2ff/4338ca?text=Station+List+View) | ![Station Details](https://placehold.co/600x400/eef2ff/4338ca?text=Station+Details+Modal) |
+| ![Station List](./assets/stationview.png) | ![Station Details](./assets/stationdetailed.png) |
 
 | Active Charging Session                                    | User Profile & Personal Analytics                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | *Live tracking of charging time, energy delivered, and cost.* | *Manage vehicle, favorites, and view personal usage charts.* |
-| ![Active Session](https://placehold.co/600x400/eef2ff/4338ca?text=Active+Charging+Session) | ![User Profile](https://placehold.co/600x400/eef2ff/4338ca?text=User+Profile+Page) |
+| ![Active Session](./assets/activecharging.png) | ![User Profile](./assets/userprofile.png) |
 
 ### 2.2. Admin Panel
 The admin panel provides a data-rich interface for complete control over the charging network.
@@ -58,7 +54,7 @@ The admin panel provides a data-rich interface for complete control over the cha
 | Admin Dashboard - Network Analytics                        | Station Management (CRUD Operations)                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | *Visualize key metrics like station usage and revenue.* | *A complete interface to create, edit, and delete stations.* |
-| ![Admin Analytics](https://placehold.co/600x400/111827/ffffff?text=Admin+Analytics+Dashboard) | ![Admin Station Management](https://placehold.co/600x400/111827/ffffff?text=Admin+Station+Management) |
+| ![Admin Analytics](./assets/admindashbord.png) | ![Admin Station Management](./assets/adminchargingadd.png) |
 
 ---
 
@@ -160,7 +156,7 @@ The application is architected for seamless deployment on modern static hosting 
 
 ## 7. Contributing
 
-Contributions are the lifeblood of open source. We welcome contributions of all forms, from bug reports to feature enhancements. Please read our **[CONTRIBUTING.md](https://github.com/your-username/your-repo-name/blob/main/CONTRIBUTING.md)** guide for our development process and code of conduct.
+Contributions are the lifeblood of open source. We welcome contributions of all forms, from bug reports to feature enhancements. Please read our **[CONTRIBUTING.md](https://github.com/jenishpatel/EVChargeNet/blob/main/CONTRIBUTING.md)** guide for our development process and code of conduct.
 
 ---
 
@@ -172,6 +168,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## 9. Contact
 
-Your Name - [@YourTwitter](https://twitter.com/YourTwitter) - your.email@example.com
+Name - [Jenish Dobariya] - jenishdobariya108@gmail.com
 
-Project Link: [https://github.com/your-username/your-repo-name](https://github.com/your-username/your-repo-name)
+Project Link: [https://github.com/jenishpatel/EVChargeNet](https://github.com/jenishpatel/EVChargeNet)
