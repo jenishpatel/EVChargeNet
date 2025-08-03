@@ -4,12 +4,6 @@ First off, thank you for considering contributing to EV ChargeNet! It's people l
 
 This document provides a set of guidelines for contributing to the project. These are mostly guidelines, not strict rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
-## Code of Conduct
-
-This project and everyone participating in it is governed by the [EV ChargeNet Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior.
-
-*(Note: You will need to create a `CODE_OF_CONDUCT.md` file. The Contributor Covenant is a great template: [www.contributor-covenant.org](https://www.contributor-covenant.org/))*
-
 ## How Can I Contribute?
 
 There are many ways to contribute to the project. Here are a few ideas:
@@ -33,7 +27,7 @@ When you are creating a bug report, please include as many details as possible. 
 
 ### Suggesting Enhancements
 
-If you have an idea for an enhancement, please create an issue on our [issues page](https://github.com/your-username/your-repo-name/issues). Before creating an enhancement suggestion, please check the existing issues to see if the enhancement has already been suggested.
+If you have an idea for an enhancement, please create an issue on our [issues page](https://github.com/jenishpatel/EVChargeNet/issues). Before creating an enhancement suggestion, please check the existing issues to see if the enhancement has already been suggested.
 
 When you are creating an enhancement suggestion, please include:
 
