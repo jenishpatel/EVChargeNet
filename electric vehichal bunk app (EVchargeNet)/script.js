@@ -209,47 +209,77 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- USER APP ---
     function initUserApp() {
         userAppContainer.innerHTML = `
-            <div class="flex flex-col md:flex-row h-screen">
-                <nav class="bg-white dark:bg-gray-800 shadow-lg md:w-64 flex-shrink-0 z-30 transition-colors duration-300 flex flex-col">
-                    <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                        <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"><i class="fas fa-charging-station mr-2"></i>EV ChargeNet</h1>
-                        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
-                            <p>Welcome, <span class="font-semibold">${loggedInUser.username}</span>!</p>
-                            <p id="live-clock" class="font-mono text-xs mt-1"></p>
+            <div class="h-screen flex flex-col">
+                <!-- Mobile Header -->
+                <header class="md:hidden bg-white dark:bg-gray-800 shadow-md z-40 p-4 flex justify-between items-center">
+                    <h1 class="text-xl font-bold text-indigo-600 dark:text-indigo-400"><i class="fas fa-charging-station mr-2"></i>EV ChargeNet</h1>
+                    <button id="mobile-menu-btn" class="text-2xl text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </header>
+    
+                <div class="flex flex-1 overflow-hidden">
+                    <nav id="main-nav" class="bg-white dark:bg-gray-800 shadow-lg w-64 flex-shrink-0 z-30 transition-transform duration-300 -translate-x-full md:translate-x-0 md:relative fixed h-full flex flex-col">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 hidden md:block">
+                            <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"><i class="fas fa-charging-station mr-2"></i>EV ChargeNet</h1>
+                            <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                                <p>Welcome, <span class="font-semibold">${loggedInUser.username}</span>!</p>
+                                <p id="live-clock" class="font-mono text-xs mt-1"></p>
+                            </div>
                         </div>
-                    </div>
-                    <ul class="mt-2 flex-grow p-2">
-                        <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="map-view" id="tour-step-1"><i class="fas fa-map-marked-alt w-6 mr-3 text-center"></i>Map View</a></li>
-                        <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="station-list" id="tour-step-2"><i class="fas fa-list-ul w-6 mr-3 text-center"></i>Station List</a></li>
-                        <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="trip-planner"><i class="fas fa-route w-6 mr-3 text-center"></i>Trip Planner</a></li>
-                        <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="my-sessions"><i class="fas fa-bolt w-6 mr-3 text-center"></i>My Sessions</a></li>
-                        <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center" data-page="profile" id="tour-step-3"><i class="fas fa-user-circle w-6 mr-3 text-center"></i>Profile</a></li>
-                    </ul>
-                    <div class="p-4 border-t border-gray-200 dark:border-gray-700">
-                        <div class="theme-switch-wrapper mb-4">
-                            <label class="theme-switch" for="theme-checkbox-user">
-                                <input type="checkbox" id="theme-checkbox-user" ${userProfile.theme === 'dark' ? 'checked' : ''} />
-                                <div class="slider-theme"></div>
-                            </label>
-                            <span class="ml-3 text-sm font-medium">Mode</span>
+                        <ul class="mt-2 flex-grow p-2">
+                            <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="map-view" id="tour-step-1"><i class="fas fa-map-marked-alt w-6 mr-3 text-center"></i>Map View</a></li>
+                            <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="station-list" id="tour-step-2"><i class="fas fa-list-ul w-6 mr-3 text-center"></i>Station List</a></li>
+                            <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="trip-planner"><i class="fas fa-route w-6 mr-3 text-center"></i>Trip Planner</a></li>
+                            <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center mb-1" data-page="my-sessions"><i class="fas fa-bolt w-6 mr-3 text-center"></i>My Sessions</a></li>
+                            <li><a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-3 rounded-md flex items-center" data-page="profile" id="tour-step-3"><i class="fas fa-user-circle w-6 mr-3 text-center"></i>Profile</a></li>
+                        </ul>
+                        <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                            <div class="theme-switch-wrapper mb-4">
+                                <label class="theme-switch" for="theme-checkbox-user">
+                                    <input type="checkbox" id="theme-checkbox-user" ${userProfile.theme === 'dark' ? 'checked' : ''} />
+                                    <div class="slider-theme"></div>
+                                </label>
+                                <span class="ml-3 text-sm font-medium">Mode</span>
+                            </div>
+                            <button id="logout-btn-user" class="w-full text-left p-3 rounded-md hover:bg-red-50 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 transition-colors duration-300"><i class="fas fa-sign-out-alt w-6 mr-3"></i>Logout</button>
                         </div>
-                        <button id="logout-btn-user" class="w-full text-left p-3 rounded-md hover:bg-red-50 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 transition-colors duration-300"><i class="fas fa-sign-out-alt w-6 mr-3"></i>Logout</button>
-                    </div>
-                </nav>
-                <main id="user-main-content" class="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto bg-gray-50 dark:bg-gray-900 z-10 transition-colors duration-300"></main>
+                    </nav>
+                    <div id="nav-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+                    <main id="user-main-content" class="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto bg-gray-50 dark:bg-gray-900 z-10 transition-colors duration-300"></main>
+                </div>
             </div>`;
-
+    
+        // Add event listeners for mobile menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('main-nav').classList.toggle('-translate-x-full');
+            document.getElementById('nav-overlay').classList.toggle('hidden');
+        });
+    
+        document.getElementById('nav-overlay').addEventListener('click', () => {
+            document.getElementById('main-nav').classList.add('-translate-x-full');
+            document.getElementById('nav-overlay').classList.add('hidden');
+        });
+    
         document.getElementById('logout-btn-user').addEventListener('click', handleLogout);
         document.getElementById('theme-checkbox-user').addEventListener('change', toggleTheme);
-        userAppContainer.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', (e) => {
-            e.preventDefault();
-            showUserPage(e.currentTarget.dataset.page);
-        }));
-
+        
+        userAppContainer.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showUserPage(e.currentTarget.dataset.page);
+                // Close mobile menu on link click
+                if (window.innerWidth < 768) {
+                    document.getElementById('main-nav').classList.add('-translate-x-full');
+                    document.getElementById('nav-overlay').classList.add('hidden');
+                }
+            });
+        });
+    
         updateClock();
         setInterval(updateClock, 1000);
         showUserPage('map-view');
-
+    
         if (!userProfile.hasCompletedTour) {
             setTimeout(startOnboardingTour, 500);
         }
@@ -362,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMapView(container) {
         container.innerHTML = `<h2 class="text-3xl font-bold mb-4">Charging Stations Map</h2>`;
         renderFilterBar(container);
-        container.innerHTML += `<div id="map" class="h-[calc(100vh-220px)] rounded-lg shadow-lg"></div>`;
+        container.innerHTML += `<div id="map" class="h-[calc(100vh-280px)] md:h-[calc(100vh-220px)] rounded-lg shadow-lg"></div>`;
         setTimeout(initMap, 10);
     }
 
