@@ -98,3 +98,19 @@ html.dark ::-webkit-scrollbar-thumb:hover { background: #78716c; }
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     width: 250px;
 }
+
+/* Responsive Navigation Styles */
+@media (max-width: 767px) {
+    #main-nav {
+        /* On mobile, nav takes full height and is positioned absolutely on the left */
+        height: 100vh;
+        position: fixed;
+    }
+}
+
+/* Helper class to show the nav when toggled by JS */
+#main-nav.is-open {
+    transform: translateX(0);
+}
+
+
